@@ -1,30 +1,45 @@
-<h1>Sign Up</h1>
+<section class="page--auth">
+  <h1>Sign up</h1>
 
-<%= form_with model: @user, url: sign_up_path do |form| %>
-  <% if form.object.errors.any? %>
-    <ul>
-      <% form.object.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <%= form_with model: @user, url: sign_up_path do |form| %>
+    <div class="form-sections">
+      <% if form.object.errors.any? %>
+        <div>
+          <% form.object.errors.full_messages.each do |message| %>
+            <div class="input--error-message">
+              <p><%= message %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
+
+      <div>
+        <%= form.label :email %>
+        <%= form.email_field :email, placeholder: "E.g. john@gmail.com", required: true, autofocus: true %>
+      </div>
+
+      <div>
+        <%= form.label :password %>
+        <%= form.password_field :password, placeholder: "Enter a strong password", required: true %>
+      </div>
+
+      <div>
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, placeholder: "Repeat your password", required: true %>
+      </div>
+
+      <div >
+        <%= form.button "Sign up", class: "button button--primary" %>
+      </div>
+
+      <div>
+        <span>
+          <p>
+            <span class="txt--w-semibold">Already have an account?</span><br />
+            <%= link_to "Log in", login_path, class: "txt--accent txt--link" %>
+          </p>
+        </span>
+      </div>
+    </div>
   <% end %>
-
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, required: true, autofocus: true %>
-  </div>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, required: true %>
-  </div>
-
-  <div>
-    <%= form.button "Sign Up" %>
-  </div>
-<% end %>
+</section>
