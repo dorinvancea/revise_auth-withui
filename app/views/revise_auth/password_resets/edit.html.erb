@@ -1,25 +1,31 @@
-<h1>Reset Your Password</h1>
+<section class="page--auth">
+  <h1>Reset your password</h1>
 
-<%= form_with model: @user, url: sign_up_path do |form| %>
-  <% if form.object.errors.any? %>
-    <ul>
-      <% form.object.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <%= form_with model: @user, url: sign_up_path do |form| %>
+    <div class="form-sections">
+      <% if form.object.errors.any? %>
+        <div>
+          <% form.object.errors.full_messages.each do |message| %>
+            <div class="input--error-message">
+              <p><%= message %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
+
+      <div>
+        <%= form.label :password %>
+        <%= form.password_field :password, placeholder: "New password", required: true %>
+      </div>
+
+      <div>
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, placeholder: "Repeat your new password", required: true %>
+      </div>
+
+      <div>
+        <%= form.button "Reset password", class: "button button--primary" %>
+      </div>
+    </div>
   <% end %>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, required: true %>
-  </div>
-
-  <div>
-    <%= form.button "Reset password" %>
-  </div>
-<% end %>
+</section>

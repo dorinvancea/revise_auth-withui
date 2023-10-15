@@ -11,9 +11,6 @@
   </head>
 
   <body>
-    <%= tag.p notice if notice %>
-    <%= tag.p alert if alert %>
-
     <nav>
       <%= link_to "Home", root_path %>
 
@@ -21,7 +18,7 @@
         <%= link_to "Profile", profile_path %>
         <%= button_to "Log out", logout_path, method: :delete %>
       <% else %>
-        <%= link_to "Sign Up", sign_up_path %>
+        <%= link_to "Sign up", sign_up_path %>
         <%= link_to "Log in", login_path %>
       <% end %>
     </nav>
